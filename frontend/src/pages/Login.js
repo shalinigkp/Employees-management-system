@@ -33,7 +33,10 @@ const loginUser =()=>{
     }
   return (
    <div className='container'>
-   <h1 className='text-center'>Login</h1>
+   <div className="row justify-content-md-center">
+   <div className="card">
+   <div className="card-header">Login</div>
+   <div className="card-body">
    <div className='form-group'>
             <label htmlFor="">User Name</label>
             <input
@@ -58,7 +61,37 @@ const loginUser =()=>{
             <input type="button" value="Login" className='btn btn-primary' onClick={loginUser}/> 
            
        </div>
+   </div>
+   </div>
+   </div>
    
+   
+  
+   {/* <div className='form-group'>
+            <label htmlFor="">User Name</label>
+            <input
+            className='form-control'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="Email"
+        />
+       </div>
+
+  <div className='form-group'>
+  <label>Password:</label>
+  <input className='form-control'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="Password"
+        />
+  </div>
+  <div className='form-group mt-2 text-center'>
+            <input type="button" value="Login" className='btn btn-primary' onClick={loginUser}/> 
+           
+       </div>
+    */}
     </div>
   );
 }

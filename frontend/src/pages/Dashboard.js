@@ -131,16 +131,18 @@ const DashBoard = () => {
   };
 
   return (
-    <div class="container">
-      
-      <div className='form-group'>
-        <Link to="/addEditEmployee" state={{ empData: null }}>
+    <div className="container">
+     
+      <div className="form-group">
+    <button className="btn btn-light"> <Link  to="/addEditEmployee" state={{ empData: null }}>
           Add New Employee
-        </Link>
-        ||
-        <Link to="/department">Add New Department</Link>||
-        <Link to="/designation">Add New Designation</Link>
-      </div>
+        </Link></button>
+     <button className="btn btn-light"> <Link to="/department">Add New Department</Link></button>
+    <button className="btn btn-light"> <Link to="/designation">Add New Designation</Link></button>
+    </div>
+
+
+      <br/>
       <div className='form-group'>
         <select
           value={selectedDept}
@@ -186,7 +188,7 @@ const DashBoard = () => {
         />
         <input class="btn btn-secondary" type="button" value="Filter" onClick={filteredData} />
       </div>
-
+<br/>
       <div>
         <EmployeeList data={filteredEmpList} />
       </div>
@@ -234,7 +236,7 @@ const EmployeeList = (props) => {
               <td>{emp.salary}</td>
               <td>{emp.designation}</td>
               <td> {emp.department}</td>
-              <td> <button>
+              <td> <button className="btn btn-light">
                 <Link to="/addEditEmployee" state={{ empData: emp }}>
                   Update
                 </Link>
