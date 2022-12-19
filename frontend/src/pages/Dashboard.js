@@ -238,11 +238,11 @@ const EmployeeList = (props) => {
     <thead>
       <tr>
         <th>Name</th>
-        <th>Dob</th>
+        {/* <th>Dob</th>
         <th>Joining date</th>
         <th>Salary</th>
         <th>Designation</th>
-        <th>Department</th>
+        <th>Department</th> */}
         <th>Action</th>
       </tr>
     </thead>
@@ -251,12 +251,12 @@ const EmployeeList = (props) => {
           return (
           
             <tr>
-              <td>{emp.firstName} {emp.lastName}</td>
-              <td>{emp.dateOfBirth}</td>
+              <td><Link to="/employeeDetails" state={{empData:emp}}>{emp.firstName} {emp.lastName}</Link></td>
+              {/* <td>{emp.dateOfBirth}</td>
               <td>{emp.dateOfJoining}</td>
               <td>{emp.salary}</td>
               <td>{emp.designation}</td>
-              <td> {emp.department}</td>
+              <td> {emp.department}</td> */}
               <td> <button className="btn btn-light">
                 <Link to="/addEditEmployee" state={{ empData: emp }}>
                   Update
