@@ -13,6 +13,7 @@ const DashBoard = () => {
   const [selectedDesg, setSelectedDesg] = useState("");
   const [fromSalary, setFromSalary] = useState("");
   const [toSalary, setToSalary] = useState("");
+  
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -25,6 +26,7 @@ const DashBoard = () => {
       .then(function (response) {
         // console.log(response.data.employeeList[0])
         setEmpList(response.data.employeeList);
+        
         setFilteredEmpList(response.data.employeeList);
       })
       .catch(function (error) {
@@ -49,6 +51,19 @@ const DashBoard = () => {
         console.log(error);
       });
   }, []);
+
+  const sortBySalary =()=>{
+    const sortData=[...empList]
+   const numAscending= sortData.sort((a, b) => parseInt(a.salary) - parseInt(b.salary));
+  setFilteredEmpList(numAscending)
+  
+  }
+  const sortByDoj =()=>{
+    const sortData=[...empList]
+   const dateAscending= sortData.sort((a, b) => new Date(a.dateOfJoining) - new Date(b.dateOfJoining));
+  setFilteredEmpList(dateAscending)
+ 
+  }
 
   const filteredData = () => {
     if (
@@ -189,15 +204,21 @@ const DashBoard = () => {
         <input class="btn btn-secondary" type="button" value="Filter" onClick={filteredData} />
       </div>
 <br/>
+
+<div>
+<input class="btn btn-primary" type="button" value="Sort By Date Of Joining" onClick={sortByDoj} />
+<input class="btn btn-primary" type="button" value="Sort By Salary" onClick={sortBySalary}/>
+</div>
       <div>
         <EmployeeList data={filteredEmpList} />
+       
       </div>
     </div>
   );
 };
 
 const EmployeeList = (props) => {
-  
+  console.log("ghhj")
   const deleteEmployee = (id) => {
     axios
       .get("http://localhost:4000/api/deleteEmployeeRecord/" + id)
