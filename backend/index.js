@@ -41,7 +41,7 @@ app.post("/api/login", async (req, res) => {
     email: req.body.email,
   });
   if (!user) {
-    return { status: "error", error: "invalid login" };
+    return res.json({ status: "error", error: "invalid login" });
   }
   if (req.body.password == user.password) {
     return res.json({ status: "ok", user: user.name });

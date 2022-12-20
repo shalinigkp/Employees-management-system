@@ -7,12 +7,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginUser = () => {
+  const loginUser = (event) => {
+    
+   event.preventDefault();
+    
     const data = {
       email: email,
       password: password,
     };
-
+   
     axios
       .post("http://localhost:4000/api/login", data)
       .then(function (response) {
@@ -33,7 +36,8 @@ const Login = () => {
       <div className="row justify-content-md-center">
         <div className="card">
           <div className="card-header">Login</div>
-          <div className="card-body">
+          <div className="card-body" >
+          <form onSubmit={loginUser} className="was-validated">
             <div className="form-group">
               <label htmlFor="">User Name</label>
               <input
@@ -41,8 +45,10 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                placeholder="Email"
+                placeholder="Email" required
               />
+               <div className="valid-feedback">Valid.</div>
+    <div className="invalid-feedback">Please fill out this field.</div>
             </div>
 
             <div className="form-group">
@@ -52,18 +58,21 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                placeholder="Password"
+                placeholder="Password" required
               />
+               <div className="valid-feedback">Valid.</div>
+    <div className="invalid-feedback">Please fill out this field.</div>
             </div>
 
             <div className="form-group mt-2 text-center">
               <input
-                type="button"
+                type="submit"
                 value="Login"
                 className="btn btn-primary"
-                onClick={loginUser}
+                
               />
             </div>
+            </form>
           </div>
         </div>
       </div>
